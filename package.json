@@ -1,0 +1,29 @@
+{
+  "name": "livepeer-static",
+  "version": "1.0.0",
+  "description": "livepeer static binaries for Mac OSX and Linux and Windows",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buildog/livepeer-static"
+  },
+  "keywords": [
+    "ffmpeg",
+    "static",
+    "library",
+    "binary",
+    "binaries",
+    "mac",
+    "linux",
+    "windows"
+  ],
+  "author": "Adrien Remacle <wouf@buildog.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buildog/livepeer-static/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "~2.3.2"
+  }
+}
