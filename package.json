@@ -1,29 +1,28 @@
 {
-  "name": "livepeer-static",
-  "version": "1.0.0",
-  "description": "livepeer static binaries for Mac OSX and Linux and Windows",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/buildog/livepeer-static"
+  "name": "livepeer-availability",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [
-    "ffmpeg",
-    "static",
-    "library",
-    "binary",
-    "binaries",
-    "mac",
-    "linux",
-    "windows"
-  ],
-  "author": "Adrien Remacle <wouf@buildog.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/buildog/livepeer-static/issues"
+  "dependencies": {
+    "@types/node": "20.2.3",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "next": "13.4.3",
+    "postcss": "8.4.23",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.0.4"
   },
-  "dependencies": {},
   "devDependencies": {
-    "tape": "~2.3.2"
+    "@tailwindcss/forms": "^0.5.3"
   }
 }
