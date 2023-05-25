@@ -45,12 +45,13 @@ async function getTimings(url: string): Promise<ITimingResult> {
   console.log(`fetching ${url} at ${start}`);
   const response = await fetch(url);
   const end = Date.now();
+  const body = await response.text();
   return {
     url,
     start,
     end,
     time: (end - start) / 1000,
-    success: response.ok,
+    success: response.ok && !body.includes("failed"),
     status: response.status,
   };
 }
