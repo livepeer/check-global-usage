@@ -18,10 +18,9 @@ const regionalNodes: {
     { region: "fra", count: 5 },
   ],
   staging: [
-    { region: "sao", count: 1 },
-    { region: "fra", count: 1 },
-    { region: "sin", count: 1 },
-    { region: "mdw", count: 1 },
+    { region: "fra-staging", count: 1 },
+    { region: "sin-staging", count: 1 },
+    { region: "mdw-staging", count: 1 },
   ],
 };
 
