@@ -35,8 +35,8 @@ function getUrl(
   playbackId: string,
   prefix: string
 ): string {
-  const tld = ecosystem === "prod" ? "studio" : "monster";
-  return `https://${region}-${ecosystem}-catalyst-${index}.lp-playback.${tld}/hls/${prefix}+${playbackId}/index.m3u8`;
+  const host = ecosystem === "prod" ? "lp-playback.studio" : "livepeer.monster";
+  return `https://${region}-${ecosystem}-catalyst-${index}.${host}/hls/${prefix}+${playbackId}/index.m3u8`;
 }
 
 async function getTimings(url: string): Promise<ITimingResult> {
