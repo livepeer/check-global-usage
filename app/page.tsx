@@ -1,6 +1,5 @@
 "use client";
 
-// import dynamic from "next/dynamic";
 import { FormEvent, useEffect, useState, useRef } from "react";
 import TableComponent from "../components/TableComponent";
 
@@ -24,10 +23,6 @@ const regionalNodes: {
   ],
 };
 
-// const TableComponent = dynamic(() => import("../components/TableComponent"), {
-//   ssr: false,
-// });
-
 function getUrl(
   region: string,
   ecosystem: string,
@@ -40,19 +35,31 @@ function getUrl(
 }
 
 async function getTimings(url: string): Promise<ITimingResult> {
-  const start = Date.now();
-  console.log(`fetching ${url} at ${start}`);
-  const response = await fetch(url);
-  const end = Date.now();
-  const body = await response.text();
-  return {
-    url,
-    start,
-    end,
-    time: (end - start) / 1000,
-    success: response.ok && !body.includes("failed"),
-    status: response.status,
-  };
+  try {
+    const start = Date.now();
+    console.log(`fetching ${url} at ${start}`);
+    const response = await fetch(url);
+    const end = Date.now();
+    const body = await response.text();
+    return {
+      url,
+      start,
+      end,
+      time: (end - start) / 1000,
+      success: response.ok && !body.includes("failed"),
+      status: response.status,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      url,
+      start: 0,
+      end: 0,
+      time: 0,
+      success: false,
+      status: 500,
+    };
+  }
 }
 
 function loopRegions(ecosystem: string, playbackId: string, prefix: string) {
