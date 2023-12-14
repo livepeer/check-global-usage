@@ -20,7 +20,7 @@ const regionalNodes: {
     { region: "hou", count: 3 },
     { region: "den", count: 3 },
     { region: "mia", count: 3 },
-    { region: "syd", count: 1 },
+    { region: "syd", count: 2 },
   ],
   staging: [
     { region: "fra-staging", count: 1 },
