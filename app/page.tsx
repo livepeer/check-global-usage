@@ -52,7 +52,9 @@ async function getTimings(url: string): Promise<ITimingResult> {
       start,
       end,
       time: (end - start) / 1000,
-      success: response.ok && !body.includes("failed"),
+      success:
+        response.ok &&
+        !(body.includes("failed") || response.headers.has("error")),
       status: response.status,
     };
   } catch (error) {
