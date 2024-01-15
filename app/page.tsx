@@ -14,20 +14,20 @@ const regionalNodes: {
   [ecosystem: string]: IRegionNode[];
 } = {
   prod: [
-    { region: "sao", count: 2 },
-    { region: "sin", count: 4 },
-    { region: "nyc", count: 8 },
-    { region: "lax", count: 3 },
-    { region: "prg", count: 3 },
+    { region: "sao", count: 1 },
+    { region: "sin", count: 3 },
+    { region: "nyc", count: 4 },
+    { region: "lax", count: 2 },
+    { region: "prg", count: 1 },
     { region: "lon", count: 3 },
     { region: "mdw", count: 4 },
-    { region: "fra", count: 5 },
+    { region: "fra", count: 3 },
     { region: "atl", count: 2 },
     { region: "sea", count: 2 },
     { region: "hou", count: 2 },
-    { region: "den", count: 2 },
+    { region: "den", count: 1 },
     { region: "mia", count: 2 },
-    { region: "syd", count: 2 },
+    { region: "syd", count: 1 },
   ],
   staging: [
     { region: "fra-staging", count: 1 },
