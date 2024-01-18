@@ -15,7 +15,7 @@ const regionalNodes: {
 } = {
   prod: [
     { region: "sao", count: 1 },
-    { region: "sin", count: 3 },
+    { region: "sin", count: 4 },
     { region: "nyc", count: 4 },
     { region: "lax", count: 2 },
     { region: "prg", count: 1 },
