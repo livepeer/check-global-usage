@@ -27,6 +27,7 @@ const regionalNodes: {
     { region: "hou", count: 2 },
     { region: "mia", count: 2 },
     { region: "syd", count: 1 },
+    { region: "sto", count: 1 },
   ],
   staging: [
     { region: "fra-staging", count: 1 },
