@@ -26,8 +26,12 @@ const regionalNodes: {
     { region: "sea", count: 1 },
     { region: "mia", count: 1 },
     { region: "syd", count: 1 },
-    { region: "sto", count: 1 },
+    { region: "mos2", count: 1 },
     { region: "mos", count: 1 },
+    { region: "fin2", count: 1 },
+    { region: "fin", count: 1 },
+    { region: "tll", count: 1 },
+    { region: "rix", count: 1 },
   ],
   staging: [
     { region: "fra-staging", count: 1 },
