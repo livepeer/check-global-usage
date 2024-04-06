@@ -5,9 +5,7 @@ export default function TableComponent({ data }: { data: ITimingResult[] }) {
     rows.push(
       <tr>
         <td>{data[i].url}</td>
-        <td
-          className={"text-" + ((data[i].success && "green") || "red") + "-500"}
-        >
+        <td className={(data[i].success && "text-green-500") || "text-red-500"}>
           {(data[i].success && "Success") || "Fail"}
         </td>
         <td>{data[i].time}</td>
