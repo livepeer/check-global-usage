@@ -29,6 +29,7 @@ const regionalNodes: {
     { region: "mos2", count: 1 },
     { region: "fin2", count: 1 },
     { region: "fin", count: 1 },
+    { region: "ttl2", count: 1 },
   ],
   staging: [
     { region: "fra-staging", count: 1 },
