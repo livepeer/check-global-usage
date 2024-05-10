@@ -15,7 +15,7 @@ const regionalNodes: {
 } = {
   prod: [
     { region: "sao", count: 1 },
-    { region: "sto", count: 2 },
+    { region: "sto", count: 5 },
     { region: "sin", count: 4 },
     { region: "nyc", count: 2 },
     { region: "lax", count: 1 },
@@ -23,13 +23,11 @@ const regionalNodes: {
     { region: "hnd", count: 1 },
     { region: "lon", count: 4 },
     { region: "mdw", count: 2 },
-    { region: "fra", count: 4 },
+    { region: "fra", count: 7 },
     { region: "sea", count: 1 },
     { region: "mia", count: 1 },
     { region: "syd", count: 1 },
     { region: "mos2", count: 1 },
-    { region: "fin2", count: 1 },
-    { region: "fin", count: 1 },
   ],
   staging: [
     { region: "fra-staging", count: 1 },
