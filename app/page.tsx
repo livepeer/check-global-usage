@@ -21,7 +21,7 @@ const regionalNodes: {
     { region: "lax", count: 1 },
     { region: "prg", count: 1 },
     { region: "hnd", count: 1 },
-    { region: "lon", count: 4 },
+    { region: "lon", count: 6 },
     { region: "mdw", count: 2 },
     { region: "fra", count: 7 },
     { region: "sea", count: 1 },
