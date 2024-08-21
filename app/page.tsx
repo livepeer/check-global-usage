@@ -67,7 +67,7 @@ async function loopRegions({ ecosystem, playbackId, prefix, jwt }: FormFields) {
   let promises = [];
   for (const url of catalystURLs) {
     promises.push(
-      getTimings(`${url}/hls/${prefix}+${playbackId}/index.m3u8`, jwt)
+      getTimings(`${url}hls/${prefix}+${playbackId}/index.m3u8`, jwt)
     );
   }
   return Promise.all(promises);
