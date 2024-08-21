@@ -10,16 +10,23 @@ interface FormFields {
   jwt: string;
 }
 
-function getCatalystsJSON() {
-  const request = new XMLHttpRequest();
-  request.open("GET", "https://livepeer.github.io/livepeer-infra/catalysts.json", false); // `false` makes the request synchronous
-  request.send(null);
+async function getCatalystsJSON() {
+  try {
+    const response = await fetch(
+      "https://livepeer.github.io/livepeer-infra/catalysts.json"
+    );
 
-  if (request.status === 200) {
-    console.log(request.responseText);
-    return JSON.parse(request.responseText);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch catalysts.json:", error);
+    throw error;
   }
-  throw new Error("Failed to fetch catalysts.json");
 }
 
 async function getTimings(url: string, jwt: string): Promise<ITimingResult> {
@@ -53,13 +60,15 @@ async function getTimings(url: string, jwt: string): Promise<ITimingResult> {
   }
 }
 
-function loopRegions({ ecosystem, playbackId, prefix, jwt }: FormFields) {
-  const catalysts = getCatalystsJSON();
+async function loopRegions({ ecosystem, playbackId, prefix, jwt }: FormFields) {
+  const catalysts = await getCatalystsJSON();
 
   const catalystURLs = catalysts[ecosystem as string]["urls"];
   let promises = [];
   for (const url of catalystURLs) {
-    promises.push(getTimings(`${url}/hls/${prefix}+${playbackId}/index.m3u8`, jwt));
+    promises.push(
+      getTimings(`${url}/hls/${prefix}+${playbackId}/index.m3u8`, jwt)
+    );
   }
   return Promise.all(promises);
 }
