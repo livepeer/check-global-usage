@@ -10,38 +10,23 @@ interface FormFields {
   jwt: string;
 }
 
-const regionalNodes: {
-  [ecosystem: string]: IRegionNode[];
-} = {
-  prod: [
-    { region: "sao", count: 1 },
-    { region: "sto", count: 5 },
-    { region: "sin", count: 4 },
-    { region: "nyc", count: 2 },
-    { region: "lax", count: 1 },
-    { region: "hnd", count: 1 },
-    { region: "lon", count: 6 },
-    { region: "mdw", count: 1 },
-    { region: "fra", count: 7 },
-    { region: "sea", count: 1 },
-    { region: "mia", count: 1 },
-    { region: "syd", count: 1 },
-  ],
-  staging: [
-    { region: "fra-staging", count: 1 },
-    { region: "mdw-staging", count: 1 },
-  ],
-};
+async function getCatalystsJSON() {
+  try {
+    const response = await fetch(
+      "https://livepeer.github.io/livepeer-infra/catalysts.json"
+    );
 
-function getUrl(
-  region: string,
-  ecosystem: string,
-  index: number,
-  playbackId: string,
-  prefix: string
-): string {
-  const host = ecosystem === "prod" ? "lp-playback.studio" : "livepeer.monster";
-  return `https://${region}-${ecosystem}-catalyst-${index}.${host}/hls/${prefix}+${playbackId}/index.m3u8`;
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch catalysts.json:", error);
+    throw error;
+  }
 }
 
 async function getTimings(url: string, jwt: string): Promise<ITimingResult> {
@@ -75,14 +60,15 @@ async function getTimings(url: string, jwt: string): Promise<ITimingResult> {
   }
 }
 
-function loopRegions({ ecosystem, playbackId, prefix, jwt }: FormFields) {
-  const regions = regionalNodes[ecosystem as string];
+async function loopRegions({ ecosystem, playbackId, prefix, jwt }: FormFields) {
+  const catalysts = await getCatalystsJSON();
+
+  const catalystURLs = catalysts[ecosystem as string]["urls"];
   let promises = [];
-  for (const { region, count } of regions) {
-    for (let index = 0; index < count; index++) {
-      let url = getUrl(region, ecosystem, index, playbackId, prefix);
-      promises.push(getTimings(url, jwt));
-    }
+  for (const url of catalystURLs) {
+    promises.push(
+      getTimings(`${url}/hls/${prefix}+${playbackId}/index.m3u8`, jwt)
+    );
   }
   return Promise.all(promises);
 }
